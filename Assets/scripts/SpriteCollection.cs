@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class SpriteCollection : MonoBehaviour
 {
-    [SerializeField] private Sprite karta;
+    [SerializeField] private GameObject cardsBack;
 
 
-    public Sprite GetCard(string name)
+    public GameObject GetCard(string name)
     {
-        return karta;
+        if (name == "cardsBack")
+            return cardsBack;
+        else
+        {
+            return null;
+        }
     }
 }

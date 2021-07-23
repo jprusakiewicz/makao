@@ -6,19 +6,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private SpriteCollection spriteCollection;
-    [SerializeField] private int numberOfCardsToSet;
-    [SerializeField] private GameObject card;
     private int offset_percent = 30;
 
-    private void Start()
-    {
-        spriteCollection = GetComponent<SpriteCollection>();
-        setCards(numberOfCardsToSet);
-    }
 
-
-    void setCards(int numberOfCards)
+    public void setCards(int numberOfCards, GameObject card)
     {
         var card_width = card.GetComponent<SpriteRenderer>().bounds.size.x;
 

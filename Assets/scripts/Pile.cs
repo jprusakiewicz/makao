@@ -8,31 +8,21 @@ public class Pile : MonoBehaviour
 {
     [SerializeField] private GameObject center_card_1;
     [SerializeField] private GameObject center_card_2;
-    [SerializeField] private GameObject center_card_3;
-//    private Sprite firstSprite;
-//    private Sprite secondSprite;
-
     void Start()
     {
-        center_card_3.SetActive(false);
-
         string a = "\u1F0A1";
         string b = "\u1F0DF";
-
-//        firstSprite = center_card_1.GetComponent<SpriteRenderer>().sprite;
-//        secondSprite = center_card_1.GetComponent<SpriteRenderer>().sprite;
-
     }
 
-    public void Set(List<Sprite> cards)
+    public void Set(List<GameObject> cards)
     {
         if (cards.Count > 0)
         {
-            center_card_1.GetComponent<SpriteRenderer>().sprite = cards[0];
+            center_card_1.GetComponent<SpriteRenderer>().sprite = cards[0].GetComponent<SpriteRenderer>().sprite;
             if (cards.Count > 1)
             {
                 center_card_2.SetActive(true);
-                center_card_2.GetComponent<SpriteRenderer>().sprite = cards[1];
+                center_card_2.GetComponent<SpriteRenderer>().sprite = cards[1].GetComponent<SpriteRenderer>().sprite;
             }
             else
             {
@@ -43,10 +33,5 @@ public class Pile : MonoBehaviour
         {
             center_card_1.SetActive(false);
         }
-    }
-    public void SetThirdCard()
-    {
-        center_card_3.SetActive(true);
-
     }
 }
