@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SetCards : MonoBehaviour
 {
-    private SpriteCollection spriteCollection;
+    private SpriteCollection _spriteCollection;
 
     [SerializeField] private GameObject pile;
     [SerializeField] private GameObject enemy1;
@@ -13,34 +13,35 @@ public class SetCards : MonoBehaviour
     [SerializeField] private GameObject enemy3;
     [SerializeField] private GameObject player;
 
-    Pile pile_script;
-    Player player_script;
+    Pile _pileScript;
+    Player _playerScript;
 
-    Enemy enemy_script1;
-    Enemy enemy_script2;
-    Enemy enemy_script3;
+    Enemy _enemyScript1;
+    Enemy _enemyScript2;
+    Enemy _enemyScript3;
 
     void setCards()
     {
         List<GameObject> n = new List<GameObject>()
-            {spriteCollection.GetCard("cardsBack"), spriteCollection.GetCard("cardsBack")};
+            {_spriteCollection.GetEnemyCard(), _spriteCollection.GetEnemyCard()};
 
-        pile_script.Set(n);
+        _pileScript.Set(n);
 
-//        player_script.Set();
-        enemy_script1.setCards(4, spriteCollection.GetCard("cardsBack"));
-        enemy_script2.setCards(5, spriteCollection.GetCard("cardsBack"));
-        enemy_script3.setCards(6, spriteCollection.GetCard("cardsBack"));
+        _playerScript.SetCards(5, _spriteCollection.GetPlayersCard("Club01"));
+        _enemyScript1.setCards(14, _spriteCollection.GetEnemyCard());
+        _enemyScript2.setCards(15, _spriteCollection.GetEnemyCard());
+        _enemyScript3.setCards(16, _spriteCollection.GetEnemyCard());
     }
 
     private void Start()
     {
-        spriteCollection = GetComponent<SpriteCollection>();
+        _spriteCollection = GetComponent<SpriteCollection>();
+        _playerScript = player.GetComponent<Player>();
 
-        pile_script = pile.GetComponent<Pile>();
-        enemy_script1 = enemy1.GetComponent<Enemy>();
-        enemy_script2 = enemy2.GetComponent<Enemy>();
-        enemy_script3 = enemy3.GetComponent<Enemy>();
+        _pileScript = pile.GetComponent<Pile>();
+        _enemyScript1 = enemy1.GetComponent<Enemy>();
+        _enemyScript2 = enemy2.GetComponent<Enemy>();
+        _enemyScript3 = enemy3.GetComponent<Enemy>();
 
         setCards();
     }

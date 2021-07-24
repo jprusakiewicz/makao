@@ -2,9 +2,126 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b702bf03-f7a2-4c7f-b55b-ee5b952eb458" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Makao/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Makao/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/BackColor_Black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/BackColor_Black.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/BackColor_Blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/BackColor_Blue.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/BackColor_Red.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/BackColor_Red.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club03.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club04.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club05.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club06.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club07.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club08.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club09.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club10.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club11.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club12.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Club13.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond03.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond04.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond05.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond06.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond07.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond08.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond09.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond10.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond11.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond12.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Diamond13.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart03.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart04.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart05.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart06.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart07.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart08.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart09.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart10.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart11.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart12.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Heart13.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Joker_Color.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Joker_Color.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Joker_Monochrome.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Joker_Monochrome.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade03.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade04.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade05.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade06.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade07.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade08.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade09.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade10.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade11.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade12.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Playing Cards/Image/PlayingCards/Spade13.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/scripts/Pile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/Pile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/scripts/SetCards.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/SetCards.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/scripts/SpriteCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/scripts/SpriteCollection.cs" afterDir="false" />
     </list>
@@ -19,13 +136,27 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/scripts/SetCards.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+            <state relative-caret-position="416">
+              <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
               <folding>
-                <marker date="1627056779301" expanded="false" signature="6:97" ph="..." />
-                <marker date="1627056779301" expanded="true" signature="136:1343" ph="{...}" />
-                <marker date="1627056779301" expanded="true" signature="570:1009" ph="{...}" />
-                <marker date="1627056779301" expanded="true" signature="1035:1341" ph="{...}" />
+                <marker date="1627130253378" expanded="false" signature="6:97" ph="..." />
+                <marker date="1627130253378" expanded="true" signature="136:1426" ph="{...}" />
+                <marker date="1627130253378" expanded="true" signature="571:1036" ph="{...}" />
+                <marker date="1627130253378" expanded="true" signature="1062:1424" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/ClicableCard.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+              <folding>
+                <marker date="1627144104238" expanded="true" signature="6:78" ph="..." />
+                <marker date="1627144104238" expanded="true" signature="175:355" ph="{...}" />
+                <marker date="1627144104238" expanded="true" signature="208:353" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -34,13 +165,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/scripts/SpriteCollection.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="11" column="30" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="30" />
+            <state relative-caret-position="300">
+              <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
               <folding>
-                <marker date="1627056001899" expanded="false" signature="6:78" ph="..." />
-                <marker date="1627056001899" expanded="true" signature="125:358" ph="{...}" />
-                <marker date="1627056001899" expanded="true" signature="223:356" ph="{...}" />
-                <marker date="1627056001899" expanded="true" signature="305:350" ph="{...}" />
+                <marker date="1627130311137" expanded="false" signature="6:114" ph="..." />
+                <marker date="1627130311137" expanded="true" signature="161:606" ph="{...}" />
+                <marker date="1627130311137" expanded="true" signature="322:528" ph="{...}" />
+                <marker date="1627130311137" expanded="true" signature="566:604" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -49,8 +180,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/scripts/Enemy.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="928">
+              <caret line="62" column="46" selection-start-line="62" selection-start-column="42" selection-end-line="62" selection-end-column="46" />
               <folding>
                 <marker date="1627055500637" expanded="false" signature="6:131" ph="..." />
                 <marker date="1627055500637" expanded="true" signature="167:2465" ph="{...}" />
@@ -69,24 +200,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Player.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+            <state relative-caret-position="320">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
               <folding>
-                <marker date="1627052572035" expanded="false" signature="6:78" ph="..." />
-                <marker date="1627052572035" expanded="true" signature="115:380" ph="{...}" />
-                <marker date="1627052572035" expanded="true" signature="234:255" ph="{...}" />
-                <marker date="1627052572035" expanded="true" signature="313:334" ph="{...}" />
-                <marker date="1627052572035" expanded="true" signature="357:378" ph="{...}" />
+                <marker date="1627136390615" expanded="false" signature="6:78" ph="..." />
+                <marker date="1627136390615" expanded="true" signature="115:1424" ph="{...}" />
+                <marker date="1627136390615" expanded="true" signature="178:910" ph="{...}" />
+                <marker date="1627136390615" expanded="true" signature="533:904" ph="{...}" />
+                <marker date="1627136390615" expanded="true" signature="970:1422" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/scripts/Pile.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+            <state relative-caret-position="192">
+              <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
               <folding>
                 <marker date="1627057774507" expanded="false" signature="6:111" ph="..." />
                 <marker date="1627057774507" expanded="true" signature="146:965" ph="{...}" />
@@ -116,6 +247,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/scripts/Pile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99258562-0D64-4271-98DD-F3A0E1467733/66/21bff0cf/UnicodeEncoding.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/scripts/SetCards.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ClicableCard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/scripts/SpriteCollection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/scripts/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -128,11 +260,12 @@
         <option value="$PROJECT_DIR$/Assets/SpriteCollection.cs" />
         <option value="$PROJECT_DIR$/Assets/SetCards.cs" />
         <option value="$PROJECT_DIR$/Assets/Enemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/scripts/Enemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/scripts/SpriteCollection.cs" />
-        <option value="$PROJECT_DIR$/Assets/scripts/SetCards.cs" />
         <option value="$PROJECT_DIR$/Assets/scripts/Pile.cs" />
+        <option value="$PROJECT_DIR$/Assets/scripts/SetCards.cs" />
+        <option value="$PROJECT_DIR$/Assets/scripts/SpriteCollection.cs" />
+        <option value="$PROJECT_DIR$/Assets/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/ClicableCard.cs" />
       </list>
     </option>
   </component>
@@ -142,8 +275,9 @@
     </ignored-facets>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="y" value="23" />
     <option name="width" value="1680" />
-    <option name="height" value="1050" />
+    <option name="height" value="955" />
   </component>
   <component name="ProjectView">
     <navigator currentView="UnityExplorer" proportions="" version="1">
@@ -154,10 +288,10 @@
         <option name="show-hidden-items" value="false" />
       </pane>
       <pane id="FileSystemExplorer" />
-      <pane id="AssemblyExplorer" />
       <pane id="SolutionExplorer">
         <option name="show-all-files" value="false" />
       </pane>
+      <pane id="AssemblyExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -206,12 +340,13 @@
       <workItem from="1626810033161" duration="180000" />
       <workItem from="1626810282658" duration="3153000" />
       <workItem from="1626883727155" duration="12311000" />
-      <workItem from="1627049600386" duration="5156000" />
+      <workItem from="1627049600386" duration="5221000" />
+      <workItem from="1627119304686" duration="9798000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20800000" />
+    <option name="totallyTimeSpent" value="30663000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -283,58 +418,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/SetPile.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/Tajm.cs" />
-    <entry file="file://$PROJECT_DIR$/Assets/SpriteCollection.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/SpriteCollection.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/SetCards.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Pile.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Enemy.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/scripts/Pile.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+        <state relative-caret-position="192">
+          <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
           <folding>
-            <element signature="e#0#78#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/SetCards.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Pile.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#111#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Enemy.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="43" column="13" lean-forward="true" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Player.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-          <folding>
-            <marker date="1627052572035" expanded="false" signature="6:78" ph="..." />
-            <marker date="1627052572035" expanded="true" signature="115:380" ph="{...}" />
-            <marker date="1627052572035" expanded="true" signature="234:255" ph="{...}" />
-            <marker date="1627052572035" expanded="true" signature="313:334" ph="{...}" />
-            <marker date="1627052572035" expanded="true" signature="357:378" ph="{...}" />
+            <marker date="1627057774507" expanded="false" signature="6:111" ph="..." />
+            <marker date="1627057774507" expanded="true" signature="146:965" ph="{...}" />
+            <marker date="1627057774507" expanded="true" signature="275:347" ph="{...}" />
+            <marker date="1627057774507" expanded="true" signature="392:963" ph="{...}" />
+            <marker date="1627057774507" expanded="true" signature="427:880" ph="{...}" />
+            <marker date="1627057774507" expanded="true" signature="584:777" ph="{...}" />
+            <marker date="1627057774507" expanded="true" signature="794:870" ph="{...}" />
+            <marker date="1627057774507" expanded="true" signature="893:957" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/scripts/Enemy.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="928">
+          <caret line="62" column="46" selection-start-line="62" selection-start-column="42" selection-end-line="62" selection-end-column="46" />
           <folding>
             <marker date="1627055500637" expanded="false" signature="6:131" ph="..." />
             <marker date="1627055500637" expanded="true" signature="167:2465" ph="{...}" />
@@ -351,43 +459,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/scripts/SpriteCollection.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="11" column="30" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="30" />
+        <state relative-caret-position="300">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
           <folding>
-            <marker date="1627056001899" expanded="false" signature="6:78" ph="..." />
-            <marker date="1627056001899" expanded="true" signature="125:358" ph="{...}" />
-            <marker date="1627056001899" expanded="true" signature="223:356" ph="{...}" />
-            <marker date="1627056001899" expanded="true" signature="305:350" ph="{...}" />
+            <marker date="1627130311137" expanded="false" signature="6:114" ph="..." />
+            <marker date="1627130311137" expanded="true" signature="161:606" ph="{...}" />
+            <marker date="1627130311137" expanded="true" signature="322:528" ph="{...}" />
+            <marker date="1627130311137" expanded="true" signature="566:604" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/scripts/SetCards.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+        <state relative-caret-position="416">
+          <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
           <folding>
-            <marker date="1627056779301" expanded="false" signature="6:97" ph="..." />
-            <marker date="1627056779301" expanded="true" signature="136:1343" ph="{...}" />
-            <marker date="1627056779301" expanded="true" signature="570:1009" ph="{...}" />
-            <marker date="1627056779301" expanded="true" signature="1035:1341" ph="{...}" />
+            <marker date="1627130253378" expanded="false" signature="6:97" ph="..." />
+            <marker date="1627130253378" expanded="true" signature="136:1426" ph="{...}" />
+            <marker date="1627130253378" expanded="true" signature="571:1036" ph="{...}" />
+            <marker date="1627130253378" expanded="true" signature="1062:1424" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/scripts/Pile.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Player.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        <state relative-caret-position="320">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
           <folding>
-            <marker date="1627057774507" expanded="false" signature="6:111" ph="..." />
-            <marker date="1627057774507" expanded="true" signature="146:965" ph="{...}" />
-            <marker date="1627057774507" expanded="true" signature="275:347" ph="{...}" />
-            <marker date="1627057774507" expanded="true" signature="392:963" ph="{...}" />
-            <marker date="1627057774507" expanded="true" signature="427:880" ph="{...}" />
-            <marker date="1627057774507" expanded="true" signature="584:777" ph="{...}" />
-            <marker date="1627057774507" expanded="true" signature="794:870" ph="{...}" />
-            <marker date="1627057774507" expanded="true" signature="893:957" ph="{...}" />
+            <marker date="1627136390615" expanded="false" signature="6:78" ph="..." />
+            <marker date="1627136390615" expanded="true" signature="115:1424" ph="{...}" />
+            <marker date="1627136390615" expanded="true" signature="178:910" ph="{...}" />
+            <marker date="1627136390615" expanded="true" signature="533:904" ph="{...}" />
+            <marker date="1627136390615" expanded="true" signature="970:1422" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/ClicableCard.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+          <folding>
+            <marker date="1627144104238" expanded="true" signature="6:78" ph="..." />
+            <marker date="1627144104238" expanded="true" signature="175:355" ph="{...}" />
+            <marker date="1627144104238" expanded="true" signature="208:353" ph="{...}" />
           </folding>
         </state>
       </provider>
