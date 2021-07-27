@@ -22,15 +22,20 @@ public class SetCards : MonoBehaviour
 
     void setCards()
     {
-        List<GameObject> n = new List<GameObject>()
-            {_spriteCollection.GetEnemyCard(), _spriteCollection.GetEnemyCard()};
+        var n = new List<Sprite>()
+        {
+            _spriteCollection.GetCardsSprite("Club05"), 
+            _spriteCollection.GetCardsSprite("Club02"),
+
+        };
 
         _pileScript.Set(n);
-
-        _playerScript.SetCards(5, _spriteCollection.GetPlayersCard("Club01"));
-        _enemyScript1.setCards(14, _spriteCollection.GetEnemyCard());
-        _enemyScript2.setCards(15, _spriteCollection.GetEnemyCard());
-        _enemyScript3.setCards(16, _spriteCollection.GetEnemyCard());
+        n.Add(_spriteCollection.GetCardsSprite("Club12"));
+        n.Add(_spriteCollection.GetCardsSprite("Diamond09"));
+        _playerScript.SetCards(_spriteCollection.GetCardsFront(), n);
+        _enemyScript1.setCards(14, _spriteCollection.GetCardsBack());
+        _enemyScript2.setCards(15, _spriteCollection.GetCardsBack());
+        _enemyScript3.setCards(16, _spriteCollection.GetCardsBack());
     }
 
     private void Start()

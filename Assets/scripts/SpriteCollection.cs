@@ -10,16 +10,18 @@ public class SpriteCollection : MonoBehaviour
     [SerializeField] private GameObject cardsFront;
 
 
-    public GameObject GetPlayersCard(string cardName)
+    public GameObject GetCardsFront()
     {
-        var cardToReturn = cardsFront;
-        cardToReturn.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(Path.Combine("Playing Cards",cardName));
-
-        return cardToReturn;
+        return cardsFront;
     }
 
-    public GameObject GetEnemyCard()
+    public GameObject GetCardsBack()
     {
         return cardsBack;
+    }
+    
+    public Sprite GetCardsSprite(string cardName)
+    {
+        return Resources.Load<Sprite>(Path.Combine("Playing Cards",cardName));
     }
 }

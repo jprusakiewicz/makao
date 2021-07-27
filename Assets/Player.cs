@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public void SetCards(int numberOfCards, GameObject card)
+    public void SetCards(GameObject card, List<Sprite> fronts)
     {
+        int numberOfCards = fronts.Count;
         int offsetPercent = setOffsetPercent(numberOfCards);
         
         var cardWidth = card.GetComponent<SpriteRenderer>().bounds.size.x;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
                 i);
             var newCard = Instantiate(card, position, gameObject.transform.rotation);
             newCard.transform.SetParent(gameObject.transform);
+            newCard.GetComponent<SpriteRenderer>().sprite = fronts[i];
         }
     }
 
