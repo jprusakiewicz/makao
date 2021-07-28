@@ -24,9 +24,8 @@ public class SetCards : MonoBehaviour
     {
         var n = new List<Sprite>()
         {
-            _spriteCollection.GetCardsSprite("Club05"), 
+            _spriteCollection.GetCardsSprite("Club05"),
             _spriteCollection.GetCardsSprite("Club02"),
-
         };
 
         _pileScript.Set(n);
@@ -50,4 +49,5 @@ public class SetCards : MonoBehaviour
 
         setCards();
     }
+
 }

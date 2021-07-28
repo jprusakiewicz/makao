@@ -1,13 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Player : MonoBehaviour
 {
+    private void Update()
+    {
+        GetPlayerCardsState();
+    }
+
     public void SetCards(GameObject card, List<Sprite> fronts)
     {
         int numberOfCards = fronts.Count;
-        int offsetPercent = setOffsetPercent(numberOfCards);
+        int offsetPercent = SetOffsetPercent(numberOfCards);
         
         var cardWidth = card.GetComponent<SpriteRenderer>().bounds.size.x;
         
@@ -26,7 +34,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private static int setOffsetPercent(int numberOfCards)
+    private static int SetOffsetPercent(int numberOfCards)
     {
         int offsetPercent;
         if (numberOfCards > 17)
@@ -43,5 +51,43 @@ public class Player : MonoBehaviour
             offsetPercent = 94;
 
         return offsetPercent;
+    }
+
+    private bool IsAnyPlayerCardActive()
+    {
+        var playerCards = gameObject.GetComponentsInChildren<ClicableCard>();
+        foreach (var playerCard in playerCards)
+        {
+            ClicableCard.CardState state = playerCard.GetState();
+            if (state.IsActive)
+                return true;
+        }
+
+        return false;
+    }
+    private List<ClicableCard.CardState> GetPlayerCardsState()
+    {
+        var cardsStates = new List<ClicableCard.CardState>();
+        var playerCards = gameObject.GetComponentsInChildren<ClicableCard>();
+        foreach (var playerCard in playerCards)
+        {
+            cardsStates.Add(playerCard.GetState());
+        }
+
+        return cardsStates;
+    }
+
+    private void HideActiveCards()
+    {
+        var playerCards = gameObject.GetComponentsInChildren<ClicableCard>();
+        foreach (var playerCard in playerCards)
+        {
+            playerCard.HideIfActive();
+        }
+    }
+
+    private void RemovePlayersCards()
+    {
+        throw new NotImplementedException();
     }
 }
