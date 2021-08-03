@@ -65,4 +65,11 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
+    public void RemoveCards()
+    {
+        foreach (Transform child in transform) {
+            Destroy(child.gameObject);
+        }
+    }
 }

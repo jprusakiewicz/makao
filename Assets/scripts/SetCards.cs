@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -20,21 +21,37 @@ public class SetCards : MonoBehaviour
     Enemy _enemyScript2;
     Enemy _enemyScript3;
 
-    void setCards()
+    public void setCards(CardsConfig cardsConfig)
     {
-        var n = new List<Sprite>()
+        ResetCards();
+        
+        var pileCards = new List<Sprite>();
+        foreach (var pileCard in cardsConfig.pile)
         {
-            _spriteCollection.GetCardsSprite("Club05"),
-            _spriteCollection.GetCardsSprite("Club02"),
-        };
+            pileCards.Add(_spriteCollection.GetCardsSprite(pileCard));
+        }
+        
+        var playerCards = new List<Sprite>();
+        foreach (var playerCard in cardsConfig.player_hand)
+        {            
+            playerCards.Add(_spriteCollection.GetCardsSprite(playerCard));
+        }
 
-        _pileScript.Set(n);
-        n.Add(_spriteCollection.GetCardsSprite("Club12"));
-        n.Add(_spriteCollection.GetCardsSprite("Diamond09"));
-        _playerScript.SetCards(_spriteCollection.GetCardsFront(), n);
-        _enemyScript1.setCards(14, _spriteCollection.GetCardsBack());
-        _enemyScript2.setCards(15, _spriteCollection.GetCardsBack());
-        _enemyScript3.setCards(16, _spriteCollection.GetCardsBack());
+        _pileScript.Set(pileCards);
+
+        _playerScript.SetCards(_spriteCollection.GetCardsFront(), playerCards);
+        _enemyScript1.setCards(cardsConfig.rest_players["left"], _spriteCollection.GetCardsBack());
+        _enemyScript2.setCards(cardsConfig.rest_players["top"], _spriteCollection.GetCardsBack());
+        _enemyScript3.setCards(cardsConfig.rest_players["right"], _spriteCollection.GetCardsBack());
+    }
+
+    void ResetCards()
+    {
+        _playerScript.RemoveCards();
+        _enemyScript1.RemoveCards();
+        _enemyScript2.RemoveCards();
+        _enemyScript3.RemoveCards();
+        _pileScript.RemoveCards();
     }
 
     private void Start()
@@ -46,8 +63,13 @@ public class SetCards : MonoBehaviour
         _enemyScript1 = enemy1.GetComponent<Enemy>();
         _enemyScript2 = enemy2.GetComponent<Enemy>();
         _enemyScript3 = enemy3.GetComponent<Enemy>();
-
-        setCards();
     }
-
 }
+
+public class CardsConfig
+{
+    public List<string> player_hand;
+    public List<string> pile;
+    public IDictionary<string,int> rest_players;
+}
+

@@ -21,7 +21,7 @@ public class SpriteCollection : MonoBehaviour
     }
     
     public Sprite GetCardsSprite(string cardName)
-    {
-        return Resources.Load<Sprite>(Path.Combine("Playing Cards",cardName));
+    {    
+        return Resources.Load<Sprite>(Path.Combine("Playing Cards", cardName));
     }
 }

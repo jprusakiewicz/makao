@@ -76,6 +76,13 @@ public class Player : MonoBehaviour
 
         return cardsStates;
     }
+    
+    public void RemoveCards()
+    {
+        foreach (Transform child in transform) {
+            Destroy(child.gameObject);
+        }
+    }
 
     private void HideActiveCards()
     {
@@ -84,10 +91,5 @@ public class Player : MonoBehaviour
         {
             playerCard.HideIfActive();
         }
-    }
-
-    private void RemovePlayersCards()
-    {
-        throw new NotImplementedException();
     }
 }
