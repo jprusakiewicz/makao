@@ -7,9 +7,11 @@ using UnityEngine.PlayerLoop;
 
 public class Player : MonoBehaviour
 {
-    private void Update()
+    private ConnectionManager connectionManager;
+
+    private void Start()
     {
-        GetPlayerCardsState();
+        connectionManager = GameObject.Find("GameController").GetComponent<ConnectionManager>();
     }
 
     public void SetCards(GameObject card, List<Sprite> fronts)
@@ -53,29 +55,29 @@ public class Player : MonoBehaviour
         return offsetPercent;
     }
 
-    private bool IsAnyPlayerCardActive()
-    {
-        var playerCards = gameObject.GetComponentsInChildren<ClicableCard>();
-        foreach (var playerCard in playerCards)
-        {
-            ClicableCard.CardState state = playerCard.GetState();
-            if (state.IsActive)
-                return true;
-        }
-
-        return false;
-    }
-    private List<ClicableCard.CardState> GetPlayerCardsState()
-    {
-        var cardsStates = new List<ClicableCard.CardState>();
-        var playerCards = gameObject.GetComponentsInChildren<ClicableCard>();
-        foreach (var playerCard in playerCards)
-        {
-            cardsStates.Add(playerCard.GetState());
-        }
-
-        return cardsStates;
-    }
+//    private bool IsAnyPlayerCardActive()
+//    {
+//        var playerCards = gameObject.GetComponentsInChildren<ClicableCard>();
+//        foreach (var playerCard in playerCards)
+//        {
+//            ClicableCard.CardState state = playerCard.GetState();
+//            if (state.IsActive)
+//                return true;
+//        }
+//
+//        return false;
+//    }
+//    private List<ClicableCard.CardState> GetPlayerCardsState()
+//    {
+//        var cardsStates = new List<ClicableCard.CardState>();
+//        var playerCards = gameObject.GetComponentsInChildren<ClicableCard>();
+//        foreach (var playerCard in playerCards)
+//        {
+//            cardsStates.Add(playerCard.GetState());
+//        }
+//
+//        return cardsStates;
+//    }
     
     public void RemoveCards()
     {
@@ -91,5 +93,11 @@ public class Player : MonoBehaviour
         {
             playerCard.HideIfActive();
         }
+    }
+
+    public void sendUpdate(string pickedCard)
+    {
+        var l = new List<string> {pickedCard};
+        connectionManager.SendUpdateToServer(l);
     }
 }

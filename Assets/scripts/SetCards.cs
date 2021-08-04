@@ -43,6 +43,7 @@ public class SetCards : MonoBehaviour
         _enemyScript1.setCards(cardsConfig.rest_players["left"], _spriteCollection.GetCardsBack());
         _enemyScript2.setCards(cardsConfig.rest_players["top"], _spriteCollection.GetCardsBack());
         _enemyScript3.setCards(cardsConfig.rest_players["right"], _spriteCollection.GetCardsBack());
+        
     }
 
     void ResetCards()

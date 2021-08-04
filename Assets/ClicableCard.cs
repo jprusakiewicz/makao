@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ClicableCard : MonoBehaviour
 {
     private bool isActve;
-
+    private Player player;
     public bool IsActive()
     {
         return isActve;
@@ -16,6 +16,7 @@ public class ClicableCard : MonoBehaviour
 
     private void Start()
     {
+        player = GetComponentInParent<Player>();   
         float move_percent = 10;
         var size_y = gameObject.GetComponent<SpriteRenderer>().size.y;
         move_distance = move_percent * size_y / 100;
@@ -35,6 +36,7 @@ public class ClicableCard : MonoBehaviour
         }
         else
         {
+            player.sendUpdate(gameObject.GetComponent<SpriteRenderer>().sprite.name);
             isActve = true;
             moveDown();
         }

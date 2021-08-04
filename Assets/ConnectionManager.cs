@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 public class Item
 {
     public bool is_game_on;
-    public int whos_turn;
+    public string whos_turn;
     public CardsConfig game_data;
 }
 
@@ -29,6 +29,8 @@ public class ConnectionManager : MonoBehaviour
     [SerializeField] private Config config;
     private GameObject[] disableUIs;
     private SetCards setCards;
+    private Arrows arrows;
+
 
     private const float connectTimeout = 5;
     private float time_from_last_connection_request = connectTimeout;
@@ -36,14 +38,16 @@ public class ConnectionManager : MonoBehaviour
     void Start()
     {
         config = new Config();
-        setCards = GameObject.Find("SpriteCollection").GetComponent<SetCards>(); //todo change set Cards
+        setCards = GameObject.Find("SpriteCollection").GetComponent<SetCards>();
+        arrows = GameObject.Find("arrows").GetComponent<Arrows>();
+
 //        disableUIs = GameObject.FindGameObjectsWithTag("DisableUI");
 //        foreach (GameObject go in disableUIs)
 //        {
 //            go.SetActive(false);
 //        }
 
-        config = new Config {player_id = "1", room_id = "1", server_address = "ws://localhost/test/"}; // todo
+        config = new Config {player_id = "1", room_id = "1", server_address = "ws://localhost:5000/ws/"}; // todo
     }
 
     private void Update()
@@ -87,16 +91,24 @@ public class ConnectionManager : MonoBehaviour
         Debug.Log(message);
         Item item = JsonConvert.DeserializeObject<Item>(message);
         if (item.is_game_on)
+        {
             setCards.setCards(item.game_data);
-
-        IsMyTurn = item.whos_turn == config.player_id.ToInt32();
+            arrows.ActivateArrow(item.whos_turn);
+        }
         // todo strzałka na tego co teraz gra
     }
     
-    public void SendUpdateToServer(byte[] pixels)
+    public void SendUpdateToServer(List<string> cardName)
     {
-        // pixels_waiting_to_be_send = pixels; todo
-        // are_there_pixels_to_be_send = true; todo
+        var dict_to_send = new Dictionary<string, List<string>>
+        {
+            ["picked_cards"] = cardName
+        };
+
+        string dict_as_str = JsonConvert.SerializeObject( dict_to_send );
+        Debug.Log("sending update to server ");
+
+        webSocket.Send(dict_as_str);
     }
 
     public void ConfigFromJson(string json)
