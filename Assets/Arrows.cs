@@ -12,6 +12,11 @@ public class Arrows : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DeactivateArrows();
+    }
+
+    public void DeactivateArrows()
+    {
         playerArrow.SetActive(false);
         leftEnemyArrow.SetActive(false);
         topEnemyArrow.SetActive(false);
@@ -20,12 +25,9 @@ public class Arrows : MonoBehaviour
 
     public void ActivateArrow(string arrowName)
     {
-        playerArrow.SetActive(false);
-        leftEnemyArrow.SetActive(false);
-        topEnemyArrow.SetActive(false);
-        rightEnemyArrow.SetActive(false);
-        
-        
+        DeactivateArrows();
+
+
         if (arrowName == "player")
             playerArrow.SetActive(true);
         else if (arrowName == "left")

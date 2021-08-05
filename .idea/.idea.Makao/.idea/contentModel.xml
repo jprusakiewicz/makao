@@ -1967,6 +1967,7 @@
         <e p="JsonDotNet" t="Include">
           <e p="link.xml" t="Include" />
         </e>
+        <e p="Nicks.cs" t="Include" />
         <e p="Player.cs" t="Include" />
         <e p="scripts" t="Include">
           <e p="Enemy.cs" t="Include" />

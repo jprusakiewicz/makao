@@ -40,13 +40,27 @@ public class SetCards : MonoBehaviour
         _pileScript.Set(pileCards);
 
         _playerScript.SetCards(_spriteCollection.GetCardsFront(), playerCards);
-        _enemyScript1.setCards(cardsConfig.rest_players["left"], _spriteCollection.GetCardsBack());
-        _enemyScript2.setCards(cardsConfig.rest_players["top"], _spriteCollection.GetCardsBack());
-        _enemyScript3.setCards(cardsConfig.rest_players["right"], _spriteCollection.GetCardsBack());
-        
+
+        var cardsBack = _spriteCollection.GetCardsBack();
+        if (cardsConfig.rest_players.TryGetValue("left", out var leftPlayer))
+        {
+            _enemyScript1.setCards(leftPlayer, cardsBack);
+        }
+
+        if (cardsConfig.rest_players.TryGetValue("top", out var topPlayer))
+        {
+            _enemyScript2.setCards(topPlayer, cardsBack);
+
+        }
+
+        if (cardsConfig.rest_players.TryGetValue("right", out var rightPlayer))
+        {
+            _enemyScript3.setCards(rightPlayer, cardsBack);
+
+        }
     }
 
-    void ResetCards()
+    public void ResetCards()
     {
         _playerScript.RemoveCards();
         _enemyScript1.RemoveCards();

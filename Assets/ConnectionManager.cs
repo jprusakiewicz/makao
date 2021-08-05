@@ -14,6 +14,7 @@ public class Item
     public bool is_game_on;
     public string whos_turn;
     public CardsConfig game_data;
+    public Dictionary<string, string> nicks;
 }
 
 public class Config
@@ -30,6 +31,7 @@ public class ConnectionManager : MonoBehaviour
     private GameObject[] disableUIs;
     private SetCards setCards;
     private Arrows arrows;
+    private Nicks nicks;
 
 
     private const float connectTimeout = 5;
@@ -40,6 +42,7 @@ public class ConnectionManager : MonoBehaviour
         config = new Config();
         setCards = GameObject.Find("SpriteCollection").GetComponent<SetCards>();
         arrows = GameObject.Find("arrows").GetComponent<Arrows>();
+        nicks = GameObject.Find("nicks").GetComponent<Nicks>();
 
 //        disableUIs = GameObject.FindGameObjectsWithTag("DisableUI");
 //        foreach (GameObject go in disableUIs)
@@ -64,6 +67,8 @@ public class ConnectionManager : MonoBehaviour
             }
             else
             {
+                Debug.Log("No Connection!!!");
+                ClearDesk();
                 time_from_last_connection_request += Time.deltaTime;
             }
         }
@@ -73,7 +78,14 @@ public class ConnectionManager : MonoBehaviour
 //            Debug.Log("sending not implemented");
 //        }
     }
-    
+
+    private void ClearDesk()
+    {
+        arrows.DeactivateArrows();
+        nicks.DeactivateNicks();
+        setCards.ResetCards();
+    }
+
     private WebSocket ConnectToServer(Config config)
     {
         string full_address = Path.Combine(config.server_address + config.room_id + "/" + config.player_id);
@@ -94,6 +106,7 @@ public class ConnectionManager : MonoBehaviour
         {
             setCards.setCards(item.game_data);
             arrows.ActivateArrow(item.whos_turn);
+            nicks.ActivateNicks(item.nicks);
         }
         // todo strzałka na tego co teraz gra
     }
