@@ -34,7 +34,7 @@ public class ConnectionManager : MonoBehaviour
     private Nicks nicks;
 
 
-    private const float connectTimeout = 5;
+    private const float connectTimeout = 3;
     private float time_from_last_connection_request = connectTimeout;
 
     void Start()
@@ -122,6 +122,22 @@ public class ConnectionManager : MonoBehaviour
         Debug.Log("sending update to server ");
 
         webSocket.Send(dict_as_str);
+    }
+
+    public void PickNewCard()
+    {
+        string string_to_send = "{\"other_move\": {\"type\": \"pick_new_card\"}}";
+        Debug.Log("sending update to server ");
+
+        webSocket.Send(string_to_send);
+    }
+
+    public void SkipMove()
+    {
+        string string_to_send = "{\"other_move\": {\"type\": \"skip\"}}";
+        Debug.Log("sending update to server ");
+
+        webSocket.Send(string_to_send);
     }
 
     public void ConfigFromJson(string json)
