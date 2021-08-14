@@ -37,7 +37,7 @@ public class ClicableCard : MonoBehaviour
         {
             isActve = false;
             moveDown();
-            player.disableColorCardsButtons();
+            player.disableCallButtons();
 
         }
         else
@@ -53,15 +53,20 @@ public class ClicableCard : MonoBehaviour
 
     private static bool IsFunctionalWithCall(string n)
     {
-        bool is_f = n.Last() == '1' || n.Last() == 'B';
+        // color -> char.Parse(n.Substring(n.Length - 2))
+        bool is_f = n.Last() == '1' || n.Last() == 'B' ;
         return is_f;
     }
 
     private bool HandleFunctionCard(string pickedCard)
     {
-        if (pickedCard.Last() != '1') return false;
+        if (!IsFunctionalWithCall(pickedCard)) return false;
         Debug.Log("open color call window");
-        player.setColorCardsButtons(pickedCard);
+        if (pickedCard.Last() == '1')
+            player.setColorCardsButtons(pickedCard);
+        else if (pickedCard.Last() == 'B')
+            player.setFigureCardsButtons(pickedCard);
+
         moveUp();
         isActve = true;
         return true;

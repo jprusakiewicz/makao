@@ -23,6 +23,7 @@ public class Config
     public string room_id;
     public string server_address;
 }
+
 public class ConnectionManager : MonoBehaviour
 {
     private static WebSocket webSocket;
@@ -72,6 +73,7 @@ public class ConnectionManager : MonoBehaviour
                 time_from_last_connection_request += Time.deltaTime;
             }
         }
+
 //        else if (isMyTurn)
 //        {
 //            //try_send_turn(); todo send my state
@@ -109,7 +111,7 @@ public class ConnectionManager : MonoBehaviour
             nicks.ActivateNicks(item.nicks);
         }
     }
-    
+
     public void SendUpdateToServer(List<string> cardName)
     {
         var dict_to_send = new Dictionary<string, List<string>>
@@ -117,7 +119,7 @@ public class ConnectionManager : MonoBehaviour
             ["picked_cards"] = cardName
         };
 
-        string dict_as_str = JsonConvert.SerializeObject( dict_to_send );
+        string dict_as_str = JsonConvert.SerializeObject(dict_to_send);
         Debug.Log("sending update to server ");
 
         webSocket.Send(dict_as_str);
@@ -148,7 +150,7 @@ public class ConnectionManager : MonoBehaviour
     {
         config.player_id = null;
     }
-    
+
     public bool IsMyTurn
     {
         get => isMyTurn;
@@ -158,13 +160,10 @@ public class ConnectionManager : MonoBehaviour
     public void callColor(string colorCall, string cardName)
     {
         var l = new List<string> {cardName};
-        var color = new Dictionary<string, string>
-        {
-            ["color"] = colorCall
-        };
         var call = new Dictionary<string, Dictionary<string, string>>()
         {
-            ["call"] = color
+            ["call"] = new Dictionary<string, string>
+                {["color"] = colorCall}
         };
         var dict_to_send = new Dictionary<string, dynamic>
         {
@@ -172,8 +171,27 @@ public class ConnectionManager : MonoBehaviour
             ["functional"] = call
         };
 
-        string dict_as_str = JsonConvert.SerializeObject( dict_to_send );
-//        string string_to_send = "{\"other_move\": {\"type\": \"pick_new_card\"}}";
+        string dict_as_str = JsonConvert.SerializeObject(dict_to_send);
+        Debug.Log("sending update to server ");
+
+        webSocket.Send(dict_as_str);
+    }
+
+    public void callFigure(string figureCall, string cardName)
+    {
+        var l = new List<string> {cardName};
+        var call = new Dictionary<string, Dictionary<string, string>>()
+        {
+            ["call"] = new Dictionary<string, string>
+                {["figure"] = figureCall}
+        };
+        var dict_to_send = new Dictionary<string, dynamic>
+        {
+            ["picked_cards"] = l,
+            ["functional"] = call
+        };
+
+        string dict_as_str = JsonConvert.SerializeObject(dict_to_send);
         Debug.Log("sending update to server ");
 
         webSocket.Send(dict_as_str);

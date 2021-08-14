@@ -8,8 +8,9 @@ using UnityEngine.PlayerLoop;
 public class Player : MonoBehaviour
 {
     private ConnectionManager connectionManager;
-    [SerializeField]private GameObject colorCall;
-    private string pickedcard;
+    [SerializeField] private GameObject colorCall;
+    [SerializeField] private GameObject figureCall;
+    private string pickedCard;
 
 
     private void Start()
@@ -21,10 +22,10 @@ public class Player : MonoBehaviour
     {
         int numberOfCards = fronts.Count;
         int offsetPercent = SetOffsetPercent(numberOfCards);
-        
+
         var cardWidth = card.GetComponent<SpriteRenderer>().bounds.size.x;
-        
-        var offset = numberOfCards * offsetPercent * cardWidth / 100; 
+
+        var offset = numberOfCards * offsetPercent * cardWidth / 100;
         var begining = gameObject.transform.localPosition.x - (offset / 2);
         for (int i = 0; i < numberOfCards; i++)
         {
@@ -37,11 +38,9 @@ public class Player : MonoBehaviour
             newCard.transform.SetParent(gameObject.transform);
             newCard.GetComponent<SpriteRenderer>().sprite = fronts[i];
         }
-        
-        
-        //reset
-        disableColorCardsButtons();
 
+        //reset
+        disableCallButtons();
     }
 
     private static int SetOffsetPercent(int numberOfCards)
@@ -63,33 +62,10 @@ public class Player : MonoBehaviour
         return offsetPercent;
     }
 
-//    private bool IsAnyPlayerCardActive()
-//    {
-//        var playerCards = gameObject.GetComponentsInChildren<ClicableCard>();
-//        foreach (var playerCard in playerCards)
-//        {
-//            ClicableCard.CardState state = playerCard.GetState();
-//            if (state.IsActive)
-//                return true;
-//        }
-//
-//        return false;
-//    }
-//    private List<ClicableCard.CardState> GetPlayerCardsState()
-//    {
-//        var cardsStates = new List<ClicableCard.CardState>();
-//        var playerCards = gameObject.GetComponentsInChildren<ClicableCard>();
-//        foreach (var playerCard in playerCards)
-//        {
-//            cardsStates.Add(playerCard.GetState());
-//        }
-//
-//        return cardsStates;
-//    }
-    
     public void RemoveCards()
     {
-        foreach (Transform child in transform) {
+        foreach (Transform child in transform)
+        {
             Destroy(child.gameObject);
         }
     }
@@ -109,19 +85,34 @@ public class Player : MonoBehaviour
         connectionManager.SendUpdateToServer(l);
     }
 
-    public void setColorCardsButtons(string s)
+    public void setColorCardsButtons(string pickedCard)
     {
-        pickedcard = s;
+        this.pickedCard = pickedCard;
         colorCall.SetActive(true);
     }
-    public void disableColorCardsButtons()
+    public void setFigureCardsButtons(string pickedCard)
+    {
+        this.pickedCard = pickedCard;
+        figureCall.SetActive(true);
+    }
+
+    public void disableCallButtons()
     {
         colorCall.SetActive(false);
+        figureCall.SetActive(false);
     }
 
     public void callColor(string color)
     {
-        connectionManager.callColor(color, pickedcard);
-        pickedcard = null;
+        connectionManager.callColor(color, pickedCard);
+        pickedCard = null;
     }
+
+    public void callFigure(string figure)
+    {
+        connectionManager.callFigure(figure, pickedCard);
+        pickedCard = null;
+    }
+
+
 }
