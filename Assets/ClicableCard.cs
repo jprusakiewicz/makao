@@ -1,22 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.XR;
 
 public class ClicableCard : MonoBehaviour
 {
     private bool isActve;
     private Player player;
+
     public bool IsActive()
     {
         return isActve;
     }
+
     private float move_distance;
 
     private void Start()
     {
-        player = GetComponentInParent<Player>();   
+        player = GetComponentInParent<Player>();
         float move_percent = 10;
         var size_y = gameObject.GetComponent<SpriteRenderer>().size.y;
         move_distance = move_percent * size_y / 100;
@@ -32,29 +36,50 @@ public class ClicableCard : MonoBehaviour
         if (isActve)
         {
             isActve = false;
-            moveUp();
+            moveDown();
+            player.disableColorCardsButtons();
+
         }
         else
         {
-            player.sendUpdate(gameObject.GetComponent<SpriteRenderer>().sprite.name);
-            isActve = true;
-            moveDown();
+            if (!HandleFunctionCard(gameObject.GetComponent<SpriteRenderer>().sprite.name))
+            {
+                player.sendUpdate(gameObject.GetComponent<SpriteRenderer>().sprite.name);
+                isActve = true;
+                moveUp();
+            }
         }
     }
 
-    private void moveUp()
+    private static bool IsFunctionalWithCall(string n)
     {
-        var new_position = new Vector3(gameObject.transform.position.x,
-                                    gameObject.transform.position.y - move_distance,
-                                       gameObject.transform.position.z);
-        gameObject.transform.position = new_position;
+        bool is_f = n.Last() == '1' || n.Last() == 'B';
+        return is_f;
+    }
+
+    private bool HandleFunctionCard(string pickedCard)
+    {
+        if (pickedCard.Last() != '1') return false;
+        Debug.Log("open color call window");
+        player.setColorCardsButtons(pickedCard);
+        moveUp();
+        isActve = true;
+        return true;
     }
 
     private void moveDown()
     {
         var new_position = new Vector3(gameObject.transform.position.x,
-                                    gameObject.transform.position.y + move_distance,
-                                       gameObject.transform.position.z);
+            gameObject.transform.position.y - move_distance,
+            gameObject.transform.position.z);
+        gameObject.transform.position = new_position;
+    }
+
+    private void moveUp()
+    {
+        var new_position = new Vector3(gameObject.transform.position.x,
+            gameObject.transform.position.y + move_distance,
+            gameObject.transform.position.z);
         gameObject.transform.position = new_position;
     }
 
@@ -69,6 +94,7 @@ public class ClicableCard : MonoBehaviour
         var state = new CardState(isActve, gameObject.GetComponent<SpriteRenderer>().sprite.name);
         return state;
     }
+
     public struct CardState
     {
         public CardState(bool _isActive, string _name)
@@ -76,6 +102,7 @@ public class ClicableCard : MonoBehaviour
             isActive = _isActive;
             name = _name;
         }
+
         private bool isActive;
         private string name;
         public bool IsActive => isActive;

@@ -108,7 +108,6 @@ public class ConnectionManager : MonoBehaviour
             arrows.ActivateArrow(item.whos_turn);
             nicks.ActivateNicks(item.nicks);
         }
-        // todo strzałka na tego co teraz gra
     }
     
     public void SendUpdateToServer(List<string> cardName)
@@ -154,5 +153,29 @@ public class ConnectionManager : MonoBehaviour
     {
         get => isMyTurn;
         set => isMyTurn = value;
+    }
+
+    public void callColor(string colorCall, string cardName)
+    {
+        var l = new List<string> {cardName};
+        var color = new Dictionary<string, string>
+        {
+            ["color"] = colorCall
+        };
+        var call = new Dictionary<string, Dictionary<string, string>>()
+        {
+            ["call"] = color
+        };
+        var dict_to_send = new Dictionary<string, dynamic>
+        {
+            ["picked_cards"] = l,
+            ["functional"] = call
+        };
+
+        string dict_as_str = JsonConvert.SerializeObject( dict_to_send );
+//        string string_to_send = "{\"other_move\": {\"type\": \"pick_new_card\"}}";
+        Debug.Log("sending update to server ");
+
+        webSocket.Send(dict_as_str);
     }
 }

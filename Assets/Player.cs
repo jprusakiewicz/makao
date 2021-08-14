@@ -8,6 +8,9 @@ using UnityEngine.PlayerLoop;
 public class Player : MonoBehaviour
 {
     private ConnectionManager connectionManager;
+    [SerializeField]private GameObject colorCall;
+    private string pickedcard;
+
 
     private void Start()
     {
@@ -34,6 +37,11 @@ public class Player : MonoBehaviour
             newCard.transform.SetParent(gameObject.transform);
             newCard.GetComponent<SpriteRenderer>().sprite = fronts[i];
         }
+        
+        
+        //reset
+        disableColorCardsButtons();
+
     }
 
     private static int SetOffsetPercent(int numberOfCards)
@@ -99,5 +107,21 @@ public class Player : MonoBehaviour
     {
         var l = new List<string> {pickedCard};
         connectionManager.SendUpdateToServer(l);
+    }
+
+    public void setColorCardsButtons(string s)
+    {
+        pickedcard = s;
+        colorCall.SetActive(true);
+    }
+    public void disableColorCardsButtons()
+    {
+        colorCall.SetActive(false);
+    }
+
+    public void callColor(string color)
+    {
+        connectionManager.callColor(color, pickedcard);
+        pickedcard = null;
     }
 }

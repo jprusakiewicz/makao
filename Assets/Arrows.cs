@@ -26,15 +26,21 @@ public class Arrows : MonoBehaviour
     public void ActivateArrow(string arrowName)
     {
         DeactivateArrows();
-
-
-        if (arrowName == "player")
-            playerArrow.SetActive(true);
-        else if (arrowName == "left")
-            leftEnemyArrow.SetActive(true);
-        else if (arrowName == "top")
-            topEnemyArrow.SetActive(true);
-        else if (arrowName == "right")
-            rightEnemyArrow.SetActive(true);
+        
+        switch (arrowName)
+        {
+            case "player":
+                playerArrow.SetActive(true);
+                break;
+            case "left":
+                leftEnemyArrow.SetActive(true);
+                break;
+            case "top":
+                topEnemyArrow.SetActive(true);
+                break;
+            case "right":
+                rightEnemyArrow.SetActive(true);
+                break;
+        }
     }
 }

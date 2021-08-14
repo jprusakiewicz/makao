@@ -1963,6 +1963,7 @@
           <e p="Third-Party Notices.txt" t="Include" />
         </e>
         <e p="ClicableCard.cs" t="Include" />
+        <e p="ColorCall.cs" t="Include" />
         <e p="ConnectionManager.cs" t="Include" />
         <e p="JsonDotNet" t="Include">
           <e p="link.xml" t="Include" />
