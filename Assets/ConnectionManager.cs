@@ -8,11 +8,13 @@ using BestHTTP;
 using BestHTTP.Extensions;
 using BestHTTP.WebSocket;
 using Newtonsoft.Json;
+using UnityEngine.UIElements;
 
 public class Item
 {
     public bool is_game_on;
     public string whos_turn;
+    public string call;
     public CardsConfig game_data;
     public Dictionary<string, string> nicks;
 }
@@ -33,6 +35,7 @@ public class ConnectionManager : MonoBehaviour
     private SetCards setCards;
     private Arrows arrows;
     private Nicks nicks;
+    [SerializeField] private GameObject call;
 
 
     private const float connectTimeout = 3;
@@ -86,6 +89,7 @@ public class ConnectionManager : MonoBehaviour
         arrows.DeactivateArrows();
         nicks.DeactivateNicks();
         setCards.ResetCards();
+        call.SetActive(false);
     }
 
     private WebSocket ConnectToServer(Config config)
@@ -108,6 +112,16 @@ public class ConnectionManager : MonoBehaviour
         {
             setCards.setCards(item.game_data);
             arrows.ActivateArrow(item.whos_turn);
+            nicks.ActivateNicks(item.nicks);
+            if (!string.IsNullOrEmpty(item.call))
+            {
+                call.SetActive(true);
+                Debug.Log("loading call texture; " + item.call);
+                call.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>(Path.Combine("Call", item.call));
+            }
+        }
+        else
+        {
             nicks.ActivateNicks(item.nicks);
         }
     }
