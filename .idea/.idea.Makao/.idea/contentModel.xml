@@ -1965,6 +1965,7 @@
         <e p="ClicableCard.cs" t="Include" />
         <e p="ColorCall.cs" t="Include" />
         <e p="ConnectionManager.cs" t="Include" />
+        <e p="CustomCard.cs" t="Include" />
         <e p="FigureCall.cs" t="Include" />
         <e p="JsonDotNet" t="Include">
           <e p="link.xml" t="Include" />

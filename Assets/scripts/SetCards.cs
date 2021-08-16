@@ -21,7 +21,7 @@ public class SetCards : MonoBehaviour
     Enemy _enemyScript2;
     Enemy _enemyScript3;
 
-    public void setCards(CardsConfig cardsConfig)
+    public void SetAllCards(CardsConfig cardsConfig)
     {
         ResetCards();
         
@@ -83,6 +83,7 @@ public class SetCards : MonoBehaviour
 
 public class CardsConfig
 {
+    // do not change variables names names
     public List<string> player_hand;
     public List<string> pile;
     public IDictionary<string,int> rest_players;

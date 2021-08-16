@@ -21,6 +21,7 @@ public class Item
 
 public class Config
 {
+    // do not change variables names names
     public string player_id;
     public string room_id;
     public string server_address;
@@ -39,7 +40,7 @@ public class ConnectionManager : MonoBehaviour
 
 
     private const float connectTimeout = 3;
-    private float time_from_last_connection_request = connectTimeout;
+    private float timeFromLastConnectionRequest = connectTimeout;
 
     void Start()
     {
@@ -59,29 +60,21 @@ public class ConnectionManager : MonoBehaviour
 
     private void Update()
     {
-        if (!string.IsNullOrEmpty(config.player_id) && webSocket == null ||
-            !string.IsNullOrEmpty(config.player_id) && !webSocket.IsOpen)
+        if ((string.IsNullOrEmpty(config.player_id) || webSocket != null) &&
+            (string.IsNullOrEmpty(config.player_id) || webSocket.IsOpen)) return;
+        if (timeFromLastConnectionRequest >= connectTimeout)
         {
-            if (time_from_last_connection_request >= connectTimeout)
-            {
-                Debug.Log("Opening connection!");
-                webSocket = ConnectToServer(config);
+            Debug.Log("Opening connection!");
+            webSocket = ConnectToServer(config);
 
-                time_from_last_connection_request = 0;
-            }
-            else
-            {
-                Debug.Log("No Connection!!!");
-                ClearDesk();
-                time_from_last_connection_request += Time.deltaTime;
-            }
+            timeFromLastConnectionRequest = 0;
         }
-
-//        else if (isMyTurn)
-//        {
-//            //try_send_turn(); todo send my state
-//            Debug.Log("sending not implemented");
-//        }
+        else
+        {
+            Debug.Log("No Connection!!!");
+            ClearDesk();
+            timeFromLastConnectionRequest += Time.deltaTime;
+        }
     }
 
     private void ClearDesk()
@@ -94,10 +87,10 @@ public class ConnectionManager : MonoBehaviour
 
     private WebSocket ConnectToServer(Config config)
     {
-        string full_address = Path.Combine(config.server_address + config.room_id + "/" + config.player_id);
-        Debug.Log("full_path: " + full_address);
+        string fullAddress = Path.Combine(config.server_address + config.room_id + "/" + config.player_id);
+        Debug.Log("full_path: " + fullAddress);
 
-        webSocket = new WebSocket(new Uri(full_address));
+        webSocket = new WebSocket(new Uri(fullAddress));
         webSocket.OnMessage += OnMessageRecieved;
         webSocket.Open();
 
@@ -110,14 +103,15 @@ public class ConnectionManager : MonoBehaviour
         Item item = JsonConvert.DeserializeObject<Item>(message);
         if (item.is_game_on)
         {
-            setCards.setCards(item.game_data);
+            setCards.SetAllCards(item.game_data);
             arrows.ActivateArrow(item.whos_turn);
             nicks.ActivateNicks(item.nicks);
             if (!string.IsNullOrEmpty(item.call))
             {
                 call.SetActive(true);
                 Debug.Log("loading call texture; " + item.call);
-                call.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load<Sprite>(Path.Combine("Call", item.call));
+                call.GetComponent<UnityEngine.UI.Image>().sprite =
+                    Resources.Load<Sprite>(Path.Combine("Call", item.call));
             }
         }
         else
@@ -126,33 +120,33 @@ public class ConnectionManager : MonoBehaviour
         }
     }
 
-    public void SendUpdateToServer(List<string> cardName)
+    public static void SendUpdateToServer(List<string> cardName)
     {
-        var dict_to_send = new Dictionary<string, List<string>>
+        var dictToSend = new Dictionary<string, List<string>>
         {
             ["picked_cards"] = cardName
         };
 
-        string dict_as_str = JsonConvert.SerializeObject(dict_to_send);
+        string dictAsStr = JsonConvert.SerializeObject(dictToSend);
         Debug.Log("sending update to server ");
 
-        webSocket.Send(dict_as_str);
+        webSocket.Send(dictAsStr);
     }
 
     public void PickNewCard()
     {
-        string string_to_send = "{\"other_move\": {\"type\": \"pick_new_card\"}}";
+        string stringToSend = "{\"other_move\": {\"type\": \"pick_new_card\"}}";
         Debug.Log("sending update to server ");
 
-        webSocket.Send(string_to_send);
+        webSocket.Send(stringToSend);
     }
 
     public void SkipMove()
     {
-        string string_to_send = "{\"other_move\": {\"type\": \"skip\"}}";
+        string stringToSend = "{\"other_move\": {\"type\": \"skip\"}}";
         Debug.Log("sending update to server ");
 
-        webSocket.Send(string_to_send);
+        webSocket.Send(stringToSend);
     }
 
     public void ConfigFromJson(string json)
@@ -171,43 +165,51 @@ public class ConnectionManager : MonoBehaviour
         set => isMyTurn = value;
     }
 
-    public void callColor(string colorCall, string cardName)
+    public void CallColor(string colorCall, string cardName)
     {
-        var l = new List<string> {cardName};
         var call = new Dictionary<string, Dictionary<string, string>>()
         {
             ["call"] = new Dictionary<string, string>
                 {["color"] = colorCall}
         };
-        var dict_to_send = new Dictionary<string, dynamic>
+        var dictToSend = new Dictionary<string, dynamic>
         {
-            ["picked_cards"] = l,
+            ["picked_cards"] = new List<string> {cardName},
             ["functional"] = call
         };
 
-        string dict_as_str = JsonConvert.SerializeObject(dict_to_send);
         Debug.Log("sending update to server ");
 
-        webSocket.Send(dict_as_str);
+        webSocket.Send(JsonConvert.SerializeObject(dictToSend));
     }
 
-    public void callFigure(string figureCall, string cardName)
+    public static void CallFigure(string figureCall, string cardName)
     {
-        var l = new List<string> {cardName};
         var call = new Dictionary<string, Dictionary<string, string>>()
         {
             ["call"] = new Dictionary<string, string>
                 {["figure"] = figureCall}
         };
-        var dict_to_send = new Dictionary<string, dynamic>
+        var dictToSend = new Dictionary<string, dynamic>
         {
-            ["picked_cards"] = l,
+            ["picked_cards"] = new List<string> {cardName},
             ["functional"] = call
         };
 
-        string dict_as_str = JsonConvert.SerializeObject(dict_to_send);
         Debug.Log("sending update to server ");
 
-        webSocket.Send(dict_as_str);
+        webSocket.Send(JsonConvert.SerializeObject(dictToSend));
+    }
+
+    public static void PickCustomJokerCard(string customCard, string joker)
+    {
+        var dictToSend = new Dictionary<string, dynamic>
+        {
+            ["picked_cards"] = new List<string> {joker, customCard},
+        };
+
+        Debug.Log("sending update to server ");
+
+        webSocket.Send(JsonConvert.SerializeObject(dictToSend));
     }
 }

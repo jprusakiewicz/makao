@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private ConnectionManager connectionManager;
     [SerializeField] private GameObject colorCall;
     [SerializeField] private GameObject figureCall;
+    [SerializeField] private GameObject jokerScroll;
     private string pickedCard;
 
 
@@ -22,25 +23,21 @@ public class Player : MonoBehaviour
     {
         int numberOfCards = fronts.Count;
         int offsetPercent = SetOffsetPercent(numberOfCards);
-
         var cardWidth = card.GetComponent<SpriteRenderer>().bounds.size.x;
-
         var offset = numberOfCards * offsetPercent * cardWidth / 100;
         var begining = gameObject.transform.localPosition.x - (offset / 2);
         for (int i = 0; i < numberOfCards; i++)
         {
             float newX = (begining + ((i + 1) * offsetPercent * cardWidth) / 100);
-
             Vector3 position = new Vector3(newX,
                 gameObject.transform.position.y,
-                i);
+                50-i);
             var newCard = Instantiate(card, position, gameObject.transform.rotation);
             newCard.transform.SetParent(gameObject.transform);
             newCard.GetComponent<SpriteRenderer>().sprite = fronts[i];
         }
-
         //reset
-        disableCallButtons();
+        disableButtons();
     }
 
     private static int SetOffsetPercent(int numberOfCards)
@@ -82,7 +79,7 @@ public class Player : MonoBehaviour
     public void sendUpdate(string pickedCard)
     {
         var l = new List<string> {pickedCard};
-        connectionManager.SendUpdateToServer(l);
+        ConnectionManager.SendUpdateToServer(l);
     }
 
     public void setColorCardsButtons(string pickedCard)
@@ -96,23 +93,35 @@ public class Player : MonoBehaviour
         figureCall.SetActive(true);
     }
 
-    public void disableCallButtons()
+    public void disableButtons()
     {
         colorCall.SetActive(false);
         figureCall.SetActive(false);
+        jokerScroll.SetActive(false);
+
     }
 
     public void callColor(string color)
     {
-        connectionManager.callColor(color, pickedCard);
+        connectionManager.CallColor(color, pickedCard);
         pickedCard = null;
     }
 
     public void callFigure(string figure)
     {
-        connectionManager.callFigure(figure, pickedCard);
+        ConnectionManager.CallFigure(figure, pickedCard);
         pickedCard = null;
     }
 
+    public void setJokerScroll(string jokerCard)
+    {
+        pickedCard = jokerCard;
+        jokerScroll.SetActive(true);
+    }
 
+    public void pickCustomJokerCard(string customCard)
+    {
+        ConnectionManager.PickCustomJokerCard(customCard, pickedCard);
+        pickedCard = null;
+    }
 }

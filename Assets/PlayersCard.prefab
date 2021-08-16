@@ -83,7 +83,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.23, y: 1.9258714}
+  m_Size: {x: 4.5, y: 7.02}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 004f42f5caa0046fba47ee0dbf2bcf93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorCall: {fileID: 0}
 --- !u!222 &3971790780723300690
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -127,8 +126,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.23, y: 1.9258714}
-    newSize: {x: 1.23, y: 1.9258714}
+    oldSize: {x: 4.5, y: 7.02}
+    newSize: {x: 4.5, y: 7.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
