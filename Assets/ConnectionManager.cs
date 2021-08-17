@@ -55,7 +55,7 @@ public class ConnectionManager : MonoBehaviour
 //            go.SetActive(false);
 //        }
 
-        config = new Config {player_id = "1", room_id = "1", server_address = "ws://localhost:5000/ws/"}; // todo
+//        config = new Config {player_id = "1", room_id = "1", server_address = "ws://localhost:5000/ws/"}; // todo
     }
 
     private void Update()
