@@ -52,7 +52,6 @@ public class ClicableCard : MonoBehaviour
 
     private static bool IsFunctionalWithCall(string n)
     {
-        // color -> char.Parse(n.Substring(n.Length - 2))
         bool is_f = n.Last() == '1' || n.Last() == 'B'|| n.Last() == 'F';
         return is_f;
     }

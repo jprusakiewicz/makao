@@ -25,6 +25,7 @@ public class Config
     public string player_id;
     public string room_id;
     public string server_address;
+    public string player_nick;
 }
 
 public class ConnectionManager : MonoBehaviour
@@ -44,7 +45,6 @@ public class ConnectionManager : MonoBehaviour
 
     void Start()
     {
-        config = new Config();
         setCards = GameObject.Find("SpriteCollection").GetComponent<SetCards>();
         arrows = GameObject.Find("arrows").GetComponent<Arrows>();
         nicks = GameObject.Find("nicks").GetComponent<Nicks>();
@@ -55,7 +55,8 @@ public class ConnectionManager : MonoBehaviour
 //            go.SetActive(false);
 //        }
 
-//        config = new Config {player_id = "1", room_id = "1", server_address = "ws://localhost:5000/ws/"}; // todo
+//        config = new Config
+//            {player_id = "1", room_id = "1", server_address = "ws://localhost:5000/ws/", player_nick = "komp"}; // todo
     }
 
     private void Update()
@@ -87,7 +88,9 @@ public class ConnectionManager : MonoBehaviour
 
     private WebSocket ConnectToServer(Config config)
     {
-        string fullAddress = Path.Combine(config.server_address + config.room_id + "/" + config.player_id);
+        string fullAddress = Path.Combine(config.server_address + config.room_id + "/" + config.player_id + "/" +
+                                          config.player_nick);
+//        string fullAddress = "http://localhost:5000/test";
         Debug.Log("full_path: " + fullAddress);
 
         webSocket = new WebSocket(new Uri(fullAddress));
@@ -116,6 +119,7 @@ public class ConnectionManager : MonoBehaviour
         }
         else
         {
+            setCards.ResetCards();
             nicks.ActivateNicks(item.nicks);
         }
     }
@@ -149,9 +153,43 @@ public class ConnectionManager : MonoBehaviour
         webSocket.Send(stringToSend);
     }
 
+    public void SendMakao()
+    {
+        string stringToSend = "{\"makao_move\": {\"type\": \"makao\"}}";
+        Debug.Log("sending update to server ");
+
+        webSocket.Send(stringToSend);
+    }
+
+    public void OnLeftNickClick()
+    {
+        string stringToSend = "{\"makao_move\": {\"type\": \"nick_click\",\"direction\": \"left\"}}";
+        Debug.Log("sending update to server ");
+
+        webSocket.Send(stringToSend);
+    }
+
+    public void OnRightNickClick()
+    {
+        string stringToSend = "{\"makao_move\": {\"type\": \"nick_click\",\"direction\": \"right\"}}";
+        Debug.Log("sending update to server ");
+
+        webSocket.Send(stringToSend);
+    }
+
+    public void OnTopNickClick()
+    {
+        string stringToSend = "{\"makao_move\": {\"type\": \"nick_click\",\"direction\": \"top\"}}";
+        Debug.Log("sending update to server ");
+
+        webSocket.Send(stringToSend);
+    }
+
     public void ConfigFromJson(string json)
     {
-        config = JsonUtility.FromJson<Config>(json);
+        Debug.Log("config from json!");
+        if (config == null)
+            config = JsonUtility.FromJson<Config>(json);
     }
 
     public void ChangeIsMyTurnFalse()

@@ -24,7 +24,6 @@ public class CustomCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         Debug.Log(cardName);
         player.pickCustomJokerCard(cardName);
-
     }
 
     public void OnPointerUp(PointerEventData eventData)
