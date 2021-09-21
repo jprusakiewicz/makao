@@ -25,23 +25,39 @@ public class SetCards : MonoBehaviour
     {
         ResetCards();
         
+        var cardsBack = _spriteCollection.GetCardsBack();
+        
         var pileCards = new List<Sprite>();
         foreach (var pileCard in cardsConfig.pile)
         {
             pileCards.Add(_spriteCollection.GetCardsSprite(pileCard));
         }
-        
-        var playerCards = new List<Sprite>();
-        foreach (var playerCard in cardsConfig.player_hand)
-        {            
-            playerCards.Add(_spriteCollection.GetCardsSprite(playerCard));
-        }
-
         _pileScript.Set(pileCards);
 
-        _playerScript.SetCards(_spriteCollection.GetCardsFront(), playerCards);
+        
+        if (cardsConfig.player_hand != null)
+        {
+            var playerCards = new List<Sprite>();
+            foreach (var playerCard in cardsConfig.player_hand)
+            {
+                playerCards.Add(_spriteCollection.GetCardsSprite(playerCard));
+            }
+            _playerScript.SetCards(_spriteCollection.GetCardsFront(), playerCards);
+        }
+        else
+        {
+            if (cardsConfig.rest_players.TryGetValue("bottom", out var bottomPlayer))
+            {
+                var playerCards = new List<Sprite>();
+                for (int i = 0; i < bottomPlayer; i++)
+                {
+                    playerCards.Add(_spriteCollection.GetCardsSprite("back"));
+                }
+                _playerScript.SetCards(_spriteCollection.GetCardsFront(), playerCards);
+            }
+        }
 
-        var cardsBack = _spriteCollection.GetCardsBack();
+
         if (cardsConfig.rest_players.TryGetValue("left", out var leftPlayer))
         {
             _enemyScript1.setCards(leftPlayer, cardsBack);

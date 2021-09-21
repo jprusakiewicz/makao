@@ -17,6 +17,8 @@ public class Item
     public string call;
     public CardsConfig game_data;
     public Dictionary<string, string> nicks;
+    public DateTime timestamp { get; set; }
+
 }
 
 public class Config
@@ -38,6 +40,10 @@ public class ConnectionManager : MonoBehaviour
     private Arrows arrows;
     private Nicks nicks;
     [SerializeField] private GameObject call;
+    [SerializeField] private GameObject btns;
+    [SerializeField] private GameObject waitingText;
+    private Timer timer;
+
 
 
     private const float connectTimeout = 3;
@@ -48,12 +54,7 @@ public class ConnectionManager : MonoBehaviour
         setCards = GameObject.Find("SpriteCollection").GetComponent<SetCards>();
         arrows = GameObject.Find("arrows").GetComponent<Arrows>();
         nicks = GameObject.Find("nicks").GetComponent<Nicks>();
-
-//        disableUIs = GameObject.FindGameObjectsWithTag("DisableUI");
-//        foreach (GameObject go in disableUIs)
-//        {
-//            go.SetActive(false);
-//        }
+        timer = GameObject.Find("Timer").GetComponent<Timer>();
 
 //        config = new Config
 //            {player_id = "1", room_id = "1", server_address = "ws://localhost:5000/ws/", player_nick = "komp"}; // todo
@@ -67,7 +68,6 @@ public class ConnectionManager : MonoBehaviour
         {
             Debug.Log("Opening connection!");
             webSocket = ConnectToServer(config);
-
             timeFromLastConnectionRequest = 0;
         }
         else
@@ -84,15 +84,14 @@ public class ConnectionManager : MonoBehaviour
         nicks.DeactivateNicks();
         setCards.ResetCards();
         call.SetActive(false);
+        btns.SetActive(false);
+        waitingText.SetActive(false);
     }
 
     private WebSocket ConnectToServer(Config config)
     {
         string fullAddress = Path.Combine(config.server_address + config.room_id + "/" + config.player_id + "/" +
                                           config.player_nick);
-//        string fullAddress = "http://localhost:5000/test";
-        Debug.Log("full_path: " + fullAddress);
-
         webSocket = new WebSocket(new Uri(fullAddress));
         webSocket.OnMessage += OnMessageRecieved;
         webSocket.Open();
@@ -102,13 +101,17 @@ public class ConnectionManager : MonoBehaviour
 
     private void OnMessageRecieved(WebSocket webSocket, string message)
     {
-        Debug.Log(message);
         Item item = JsonConvert.DeserializeObject<Item>(message);
         if (item.is_game_on)
         {
             setCards.SetAllCards(item.game_data);
             arrows.ActivateArrow(item.whos_turn);
             nicks.ActivateNicks(item.nicks);
+            waitingText.SetActive(false);
+            call.SetActive(false);
+            timer.SetTimer(item.timestamp);
+
+
             if (!string.IsNullOrEmpty(item.call))
             {
                 call.SetActive(true);
@@ -116,11 +119,18 @@ public class ConnectionManager : MonoBehaviour
                 call.GetComponent<UnityEngine.UI.Image>().sprite =
                     Resources.Load<Sprite>(Path.Combine("Call", item.call));
             }
+
+            if (item.whos_turn == "player")
+            {
+                btns.SetActive(true);
+            }
         }
         else
         {
+            btns.SetActive(false);
             setCards.ResetCards();
             nicks.ActivateNicks(item.nicks);
+            waitingText.SetActive(true);
         }
     }
 
@@ -130,64 +140,51 @@ public class ConnectionManager : MonoBehaviour
         {
             ["picked_cards"] = cardName
         };
-
+        
         string dictAsStr = JsonConvert.SerializeObject(dictToSend);
-        Debug.Log("sending update to server ");
-
         webSocket.Send(dictAsStr);
     }
 
     public void PickNewCard()
     {
         string stringToSend = "{\"other_move\": {\"type\": \"pick_new_card\"}}";
-        Debug.Log("sending update to server ");
-
         webSocket.Send(stringToSend);
     }
 
     public void SkipMove()
     {
         string stringToSend = "{\"other_move\": {\"type\": \"skip\"}}";
-        Debug.Log("sending update to server ");
-
         webSocket.Send(stringToSend);
     }
 
     public void SendMakao()
     {
         string stringToSend = "{\"makao_move\": {\"type\": \"makao\"}}";
-        Debug.Log("sending update to server ");
-
         webSocket.Send(stringToSend);
     }
 
     public void OnLeftNickClick()
     {
         string stringToSend = "{\"makao_move\": {\"type\": \"nick_click\",\"direction\": \"left\"}}";
-        Debug.Log("sending update to server ");
-
         webSocket.Send(stringToSend);
     }
 
     public void OnRightNickClick()
     {
         string stringToSend = "{\"makao_move\": {\"type\": \"nick_click\",\"direction\": \"right\"}}";
-        Debug.Log("sending update to server ");
-
         webSocket.Send(stringToSend);
     }
 
     public void OnTopNickClick()
     {
         string stringToSend = "{\"makao_move\": {\"type\": \"nick_click\",\"direction\": \"top\"}}";
-        Debug.Log("sending update to server ");
 
         webSocket.Send(stringToSend);
     }
 
     public void ConfigFromJson(string json)
     {
-        Debug.Log("config from json!");
+        Debug.Log("config from json");
         if (config == null)
             config = JsonUtility.FromJson<Config>(json);
     }
@@ -195,12 +192,6 @@ public class ConnectionManager : MonoBehaviour
     public void ChangeIsMyTurnFalse()
     {
         config.player_id = null;
-    }
-
-    public bool IsMyTurn
-    {
-        get => isMyTurn;
-        set => isMyTurn = value;
     }
 
     public void CallColor(string colorCall, string cardName)
@@ -215,8 +206,6 @@ public class ConnectionManager : MonoBehaviour
             ["picked_cards"] = new List<string> {cardName},
             ["functional"] = call
         };
-
-        Debug.Log("sending update to server ");
 
         webSocket.Send(JsonConvert.SerializeObject(dictToSend));
     }
@@ -234,8 +223,6 @@ public class ConnectionManager : MonoBehaviour
             ["functional"] = call
         };
 
-        Debug.Log("sending update to server ");
-
         webSocket.Send(JsonConvert.SerializeObject(dictToSend));
     }
 
@@ -245,8 +232,6 @@ public class ConnectionManager : MonoBehaviour
         {
             ["picked_cards"] = new List<string> {joker, customCard},
         };
-
-        Debug.Log("sending update to server ");
 
         webSocket.Send(JsonConvert.SerializeObject(dictToSend));
     }

@@ -56,7 +56,7 @@ public class ClicableCard : MonoBehaviour
         return is_f;
     }
 
-    private bool HandleFunctionCard(string pickedCard)
+    public bool HandleFunctionCard(string pickedCard)
     {
         if (!IsFunctionalWithCall(pickedCard)) return false;
         Debug.Log("open color call window");
