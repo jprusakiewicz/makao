@@ -23,18 +23,18 @@ public class Player : MonoBehaviour
     {
         int numberOfCards = fronts.Count;
         int offsetPercent = SetOffsetPercent(numberOfCards);
-        var cardWidth = card.GetComponent<SpriteRenderer>().bounds.size.x;
+        var cardWidth = card.GetComponent<UnityEngine.UI.Image>().sprite.bounds.size.x;
         var offset = numberOfCards * offsetPercent * cardWidth / 100;
-        var begining = gameObject.transform.localPosition.x - (offset / 2);
+        var begining = gameObject.transform.localPosition.x - (offset / 1.71f);
         for (int i = 0; i < numberOfCards; i++)
         {
-            float newX = (begining + ((i + 1) * offsetPercent * cardWidth) / 100);
+            float newX = (begining + ((i + 1) * offsetPercent * cardWidth) / 100) + gameObject.transform.position.x;
             Vector3 position = new Vector3(newX,
                 gameObject.transform.position.y,
                 50-i);
             var newCard = Instantiate(card, position, gameObject.transform.rotation);
             newCard.transform.SetParent(gameObject.transform);
-            newCard.GetComponent<SpriteRenderer>().sprite = fronts[i];
+            newCard.GetComponent<UnityEngine.UI.Image>().sprite = fronts[i];
         }
         //reset
         disableButtons();

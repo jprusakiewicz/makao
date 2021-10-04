@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
 
     public void setCards(int numberOfCards, GameObject card)
     {
-        var card_width = card.GetComponent<SpriteRenderer>().bounds.size.x;
+        var card_width = card.GetComponent<UnityEngine.UI.Image>().sprite.bounds.size.x;
 
         if (numberOfCards > 6)
             offset_percent = 20;
@@ -21,10 +21,10 @@ public class Enemy : MonoBehaviour
         var offset = numberOfCards * offset_percent * card_width / 100; 
         if (math.abs(gameObject.transform.eulerAngles.z) == 90)
         {
-            var begining = gameObject.transform.localPosition.y - (offset / 2);
+            float begining = gameObject.transform.localPosition.y - (offset / 1.7f);
             for (int i = 0; i < numberOfCards; i++)
             {
-                float new_y = (begining + ((i + 1) * offset_percent * card_width) / 100);
+                float new_y = (begining + ((i + 1) * offset_percent * card_width) / 100) + gameObject.transform.position.y;
 
                 Vector3 position = new Vector3(
                     gameObject.transform.position.x,
@@ -36,11 +36,11 @@ public class Enemy : MonoBehaviour
         }
         else if (math.abs(gameObject.transform.eulerAngles.z) == 270)
         {
-            var begining = gameObject.transform.localPosition.y + (offset / 2);
+            var begining = gameObject.transform.localPosition.y + (offset / 1.7f);
             for (int i = 0; i < numberOfCards; i++)
             {
                 int j = numberOfCards - i;
-                float new_y = (begining - ((i + 1) * offset_percent * card_width) / 100);
+                float new_y = (begining - ((i + 1) * offset_percent * card_width) / 100) + gameObject.transform.position.y;
 
                 Vector3 position = new Vector3(
                     gameObject.transform.position.x,
@@ -52,10 +52,10 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            var begining = gameObject.transform.localPosition.x - (offset / 2);
+            var begining = gameObject.transform.localPosition.x - (offset / 1.7f);
             for (int i = 0; i < numberOfCards; i++)
             {
-                float new_x = (begining + ((i + 1) * offset_percent * card_width) / 100);
+                float new_x = (begining + ((i + 1) * offset_percent * card_width) / 100) + gameObject.transform.position.x;
 
                 Vector3 position = new Vector3(new_x,
                     gameObject.transform.position.y,

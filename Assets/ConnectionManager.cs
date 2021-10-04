@@ -51,13 +51,18 @@ public class ConnectionManager : MonoBehaviour
 
     void Start()
     {
+        
         setCards = GameObject.Find("SpriteCollection").GetComponent<SetCards>();
         arrows = GameObject.Find("arrows").GetComponent<Arrows>();
         nicks = GameObject.Find("nicks").GetComponent<Nicks>();
         timer = GameObject.Find("Timer").GetComponent<Timer>();
+        waitingText.SetActive(true);
+        btns.SetActive(false);
+
+        
 
 //        config = new Config
-//            {player_id = "1", room_id = "1", server_address = "ws://localhost:5000/ws/", player_nick = "komp"}; // todo
+//            {player_id = "1", room_id = "1", server_address = "ws://localhost:5000/test/", player_nick = "komp"}; // todo
     }
 
     private void Update()
@@ -101,6 +106,7 @@ public class ConnectionManager : MonoBehaviour
 
     private void OnMessageRecieved(WebSocket webSocket, string message)
     {
+        ClearDesk();
         Item item = JsonConvert.DeserializeObject<Item>(message);
         if (item.is_game_on)
         {
@@ -129,6 +135,7 @@ public class ConnectionManager : MonoBehaviour
         {
             btns.SetActive(false);
             setCards.ResetCards();
+            setCards.SetAllCards(item.game_data);
             nicks.ActivateNicks(item.nicks);
             waitingText.SetActive(true);
         }

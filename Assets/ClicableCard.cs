@@ -20,16 +20,18 @@ public class ClicableCard : MonoBehaviour
 
     private void Start()
     {
+        Button btn = GetComponent<Button>();
+        btn.onClick.AddListener(CardClick);
         player = GetComponentInParent<Player>();
-        float move_percent = 10;
-        var size_y = gameObject.GetComponent<SpriteRenderer>().size.y;
+        float move_percent = 5;
+        var size_y = gameObject.GetComponent<UnityEngine.UI.Image>().sprite.bounds.size.y;
         move_distance = move_percent * size_y / 100;
     }
 
-    private void OnMouseDown()
-    {
-        CardClick();
-    }
+//    private void OnMouseDown()
+//    {
+//        CardClick();
+//    }
 
     private void CardClick()
     {
@@ -41,9 +43,9 @@ public class ClicableCard : MonoBehaviour
         }
         else
         {
-            if (!HandleFunctionCard(gameObject.GetComponent<SpriteRenderer>().sprite.name))
+            if (!HandleFunctionCard(gameObject.GetComponent<UnityEngine.UI.Image>().sprite.name))
             {
-                player.sendUpdate(gameObject.GetComponent<SpriteRenderer>().sprite.name);
+                player.sendUpdate(gameObject.GetComponent<UnityEngine.UI.Image>().sprite.name);
                 isActve = true;
                 moveUp();
             }
